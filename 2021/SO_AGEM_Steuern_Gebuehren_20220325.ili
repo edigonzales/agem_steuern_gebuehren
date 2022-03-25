@@ -1,0 +1,54 @@
+INTERLIS 2.3;
+
+/** !!------------------------------------------------------------------------------
+ *  !! Version    | wer | Änderung
+ *  !!------------------------------------------------------------------------------
+ *  !! 2022-03-25 | sz  | Ersterfassung
+ *  !!==============================================================================
+ */
+!!@ technicalContact="mailto:agi@bd.so.ch"
+MODEL SO_AGEM_Steuern_Gebuehren_20220325 (de)
+AT "https://geo.so.ch/models/AGEM"
+VERSION "2022-03-25"  =
+  IMPORTS GeometryCHLV95_V1;
+
+  TOPIC Steuern_Gebuehren =
+
+    /** Steuern und Gebühren pro Gemeinde
+     */
+    CLASS Steuern_Gebuehren =
+      /** Name der Gemeinde
+       */
+      Gemeindename : MANDATORY TEXT;
+      /** Offizielle Gemeindenummer
+       */
+      BFSNr : MANDATORY MTEXT;
+      /** tbd
+       */
+      Wassergebuehren : MANDATORY 0.00 .. 99.99;
+      /** tbd
+       */
+      Abwassergebuehren : MANDATORY 0.00 .. 99.99;
+      /** tbd
+       */
+      Kehrrichtentsorgung : MANDATORY TEXT;
+      /** Steuerfuss Natürliche Personen
+       */
+      Steuerfuss_NP : MANDATORY 0 .. 999;
+      /** Steuerfuss Juristische Personen
+       */
+      Steuerfuss_JP : MANDATORY 0 .. 999;
+      /** tbd
+       */
+      Personalsteuer : MANDATORY TEXT;
+      /** Geometrie der Gemeinde
+       */
+      Geometrie : MANDATORY GeometryCHLV95_V1.MultiSurface;
+      /** Jahr der Erhebung
+       */
+      Jahr : MANDATORY INTERLIS.GregorianYear;
+    END Steuern_Gebuehren;
+
+  END Steuern_Gebuehren;
+
+END SO_AGEM_Steuern_Gebuehren_20220325.
